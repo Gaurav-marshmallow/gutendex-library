@@ -6,8 +6,7 @@ This project demonstrates frontend architecture, API integration, infinite scrol
 ---
 
 ## 🚀 Live Demo
-👉 [View the app here](https://your-deployment-link.com)  
-*(Replace with your Netlify/Vercel/GitHub Pages link once deployed)*
+https://gaurav-marshmallow.github.io/gutendex-library/
 
 ---
 
