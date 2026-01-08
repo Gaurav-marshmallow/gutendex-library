@@ -1,37 +1,35 @@
 import axios from "axios";
 let cancelToken;
-const BASE_URL = "http://skunkworks.ignitesol.com:8000/books";
-
+const BASE_URL = "https://cors-anywhere.herokuapp.com/http://skunkworks.ignitesol.com:8000/books";//done for CORS issue
 export const getBooks = async ({ category, search = "", pageUrl }) => {
-   if (cancelToken) {
+  if (cancelToken) {
     cancelToken.cancel("Operation canceled due to new request.");
   }
   cancelToken = axios.CancelToken.source();
- 
+
   let url;
 
   if (pageUrl) {
-    // Use the full URL returned by the API
-     url = pageUrl.replace("http://localhost:8005/books", BASE_URL);
+    url = pageUrl.includes("localhost")
+      ? pageUrl.replace("http://localhost:8005/books", BASE_URL)
+      : pageUrl;
   } else {
-    // Build the first request yourself
     url = `${BASE_URL}?topic=${category}&mime_type=image`;
     if (search) {
       url += `&search=${encodeURIComponent(search)}`;
     }
   }
+
   try {
     const { data } = await axios.get(url, { cancelToken: cancelToken.token });
     return data;
   } catch (error) {
     if (axios.isCancel(error)) {
-      return null; // ignore cancel errors
+      return null;
     }
+    console.error("API error:", error);
     throw error;
   }
-
-  // const { data } = await axios.get(url, { cancelToken: cancelToken.token });
-  // return data;
 };
 export const getCategories = async () => {
   const { data } = await axios.get(`${BASE_URL}?mime_type=image&languages=en`);
