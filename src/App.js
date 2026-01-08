@@ -4,7 +4,7 @@ import BooksPage from "./pages/BooksPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/gutendex-library">
       <Routes>
         <Route path="/" element={<CategoriesPage />} />
         <Route path="/books/:category" element={<BooksPage />} />
