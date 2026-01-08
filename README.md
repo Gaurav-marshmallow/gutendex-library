@@ -34,7 +34,7 @@ https://gaurav-marshmallow.github.io/gutendex-library/
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/<your-username>/gutendex-library.git
+git clone https://github.com/Gaurav-marshmallow/gutendex-library.git
 cd gutendex-library
 npm install
 npm start
