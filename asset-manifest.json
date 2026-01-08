@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gutendex-library/static/css/main.671d2fa5.css",
-    "main.js": "/gutendex-library/static/js/main.f62e9c39.js",
+    "main.js": "/gutendex-library/static/js/main.b4b9f876.js",
     "index.html": "/gutendex-library/index.html",
     "main.671d2fa5.css.map": "/gutendex-library/static/css/main.671d2fa5.css.map",
-    "main.f62e9c39.js.map": "/gutendex-library/static/js/main.f62e9c39.js.map"
+    "main.b4b9f876.js.map": "/gutendex-library/static/js/main.b4b9f876.js.map"
   },
   "entrypoints": [
     "static/css/main.671d2fa5.css",
-    "static/js/main.f62e9c39.js"
+    "static/js/main.b4b9f876.js"
   ]
 }
