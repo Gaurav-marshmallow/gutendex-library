@@ -1,6 +1,7 @@
 import axios from "axios";
 let cancelToken;
-const BASE_URL = "https://cors-anywhere.herokuapp.com/http://skunkworks.ignitesol.com:8000/books";
+const BASE_URL = "http://skunkworks.ignitesol.com:8000/books";
+
 export const getBooks = async ({ category, search = "", pageUrl }) => {
    if (cancelToken) {
     cancelToken.cancel("Operation canceled due to new request.");
