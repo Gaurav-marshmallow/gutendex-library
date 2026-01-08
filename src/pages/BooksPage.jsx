@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getBooks } from "../services/api";
 import BookCard from "../components/BookCard";
@@ -26,11 +26,8 @@ export default function BooksPage() {
     return () => clearTimeout(timeout);
   }, [rawSearch]);
 
-  useEffect(() => {
-    loadBooks();
-  }, [category, search]);
 
-  const loadBooks = async (pageUrl) => {
+  const loadBooks = useCallback(async (pageUrl) => {
     if (!pageUrl) setLoading(true);
     const data = await getBooks({ category, search, pageUrl });
     if (data) {
@@ -38,7 +35,11 @@ export default function BooksPage() {
       setNextUrl(data.next);
     }
     if (!pageUrl) setLoading(false);
-  };
+  }, [category, search]);
+  useEffect(() => {
+    loadBooks();
+  }, [loadBooks]);
+
 
   return (
     <div style={{ padding: "1rem" }}>
@@ -53,7 +54,7 @@ export default function BooksPage() {
         marginBottom: "1rem"
       }}
       >
-       &lt; Back
+        &lt; Back
       </button>
 
       <h2>{category} Books</h2>
